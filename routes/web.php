@@ -25,3 +25,9 @@ Route::prefix('/')->group(function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/home/postmikrotik', [HomeController::class, 'postmikrotik'])->name('postmikrotik');
+Route::prefix('/home/data')->group(function($slugcatatan = null){
+    Route::get('/carimikrotik', [HomeController::class, 'carimikrotik'])->name('carimikrotik');
+    Route::post('/carimikrotik/cari', [HomeController::class, 'cari'])->name('cari');
+    Route::get('/mikrotik', [HomeController::class, 'mikrotik'])->name('mikrotik');
+});

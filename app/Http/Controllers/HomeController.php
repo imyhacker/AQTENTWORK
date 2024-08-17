@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataMikrotik;
+use RouterOS\Client;
+use RouterOS\Config;
+use \RouterOS\Query;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class HomeController extends Controller
 {
@@ -25,4 +31,49 @@ class HomeController extends Controller
     {
         return view('Dashboard/index');
     }
-}
+    public function postmikrotik(Request $req){
+        $ipmikrotik = $req->ipmikrotik;
+        $username = $req->usernamemikrotik;
+        $password = $req->passwordmikrotik;
+        $port = $req->portmikrotik;
+        $catatan = $req->catatan;
+
+        $data = DataMikrotik::create([
+            'ipmikrotik' => $ipmikrotik,
+            'usernamemikrotik' => $username,
+            'passwordmikrotik' => $password,
+            'portmikrotik' => $port,
+            'catatan' => $catatan,
+            'slugcatatan' => Str::slug($catatan, "_")
+        ]);
+        return redirect()->back();
+    }
+    public function carimikrotik(){
+        $dm = DataMikrotik::all();
+       //dd($dm);
+        return view('Dashboard/DATA/carimikrotik', compact('dm'));
+    }
+    public function cari(Request $req){
+        $slugcatatan = $req->slugcatatan;
+      $data = DataMikrotik::where('slugcatatan', $slugcatatan)->first();
+      
+        $ip = $data->ipmikrotik;
+        $username = $data->usernamemikrotik;
+        $password = $data->passwordmikrotik;
+        $port = $data->portmikrotik;
+        
+
+        $config = new Config([
+            'host' => $ip, #103.158.121.51
+            'user' => $username,
+            'pass' => $password,
+            'port' => $port,
+        ]);
+        $client = new Client($config);
+        $query =
+        (new Query('/ppp/active/print'));
+         $response = $client->query($query)->read();
+        //dd($response);
+         return view('Dashboard/DATA/mikrotik', compact('response'));
+    }
+   }
