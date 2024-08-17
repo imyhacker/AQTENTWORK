@@ -19,10 +19,11 @@
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>Setting</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-lin beep beep-sidebar" href="#" data-toggle="modal" data-target="#exampleModal">Tambah Mikrotik</a></li>     
+                <li><a class="nav-lin beep beep-sidebar" href="#" data-toggle="modal" data-target="#exampleModal">Tambah Mikrotik</a></li>
+                <li><a class="nav-lin beep beep-sidebar" href="#" data-toggle="modal" data-target="#tambahOLT">Tambah OLT</a></li>        
                 <li><a class="nav-lin beep beep-sidebar" href="{{route('carimikrotik')}}">Cari Mikrotik</a></li>                
            
-                <li><a class="nav-lin beep beep-sidebar" href="">Data Mikrotik</a></li>                
+                <li><a class="nav-lin beep beep-sidebar" href="{{route('cariolt')}}">Cari OLT</a></li>                
 
             </ul>
             </li>

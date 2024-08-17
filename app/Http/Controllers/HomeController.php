@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataMikrotik;
+use App\Models\DataOLT;
 use RouterOS\Client;
 use RouterOS\Config;
 use \RouterOS\Query;
@@ -48,10 +49,32 @@ class HomeController extends Controller
         ]);
         return redirect()->back();
     }
+    public function postolt(Request $req){
+        $ipolt = $req->ipolt;
+        $catatan = $req->catatan;
+
+        $data = DataOLT::create([
+            'ipolt' => $ipolt,
+            'catatan' => $catatan,
+            'slugcatatan' => Str::slug($catatan, "_")
+        ]);
+        return redirect()->back();
+    }
     public function carimikrotik(){
         $dm = DataMikrotik::all();
        //dd($dm);
         return view('Dashboard/DATA/carimikrotik', compact('dm'));
+    }
+    public function cariolt(){
+        $do = DataOLT::all();
+       //dd($dm);
+        return view('Dashboard/DATA/cariolt', compact('do'));
+    }
+    public function caridataolt(Request $req){
+        $slugcatatan = $req->slugcatatan;
+      $data = DataOLT::where('slugcatatan', $slugcatatan)->first();
+      //dd($slugcatatan);
+    return view('Dashboard/DATA/olt', compact('data'));
     }
     public function cari(Request $req){
         $slugcatatan = $req->slugcatatan;

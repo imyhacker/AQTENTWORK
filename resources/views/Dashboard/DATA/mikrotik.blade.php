@@ -23,6 +23,7 @@
                                 <th>No</th>
                                 <th>ID</th>
                                 <th>Client</th>
+                                <th>Action</th>
                                 <th>Type</th>
                                 <th>Address</th>
                             </tr>
@@ -34,6 +35,18 @@
                                 <td>{{$no++}}</td>
                                 <td>{{$d['.id']}}</td>
                                 <td>{{$d['name']}}</td>
+                                <td>
+                                  <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                      Action
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item" href="#">Remote Alat</a>
+                                      <a class="dropdown-item" href="#">Remote Modem</a>
+                                      <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                  </div>
+                                </td>
                                 <td>{{$d['service']}}</td>
                                 <td>{{$d['address']}}</td>
                             </tr>
