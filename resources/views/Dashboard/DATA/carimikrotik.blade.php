@@ -44,6 +44,7 @@
         </section>
       </div>
       <x-dcore.footer />
+
       <x-dcore.modaltambah />
 
     </div>

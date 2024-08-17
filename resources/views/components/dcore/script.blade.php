@@ -27,5 +27,25 @@
     $('#myTable').DataTable();
 } );
   </script>
+  <script>
+         document.addEventListener('DOMContentLoaded', function() {
+        var copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var textToCopy = this.closest('tr').querySelector('.text-to-copy').innerText;
+
+                var tempTextarea = document.createElement('textarea');
+                tempTextarea.value = textToCopy;
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextarea);
+
+                alert('Text copied to clipboard: ' + textToCopy);
+            });
+        });
+    });
+    </script>
 </body>
 </html>

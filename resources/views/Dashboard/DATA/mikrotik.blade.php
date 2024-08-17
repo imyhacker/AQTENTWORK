@@ -17,7 +17,7 @@
               <div class="card">
               
                 <div class="card-body">
-                    <table id="myTable" class="table">
+                    <table id="myTable" class="table table-responsive">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -26,6 +26,7 @@
                                 <th>Action</th>
                                 <th>Type</th>
                                 <th>Address</th>
+                                <th>XFunc</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,14 +42,16 @@
                                       Action
                                     </button>
                                     <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="#">Remote Alat</a>
-                                      <a class="dropdown-item" href="#">Remote Modem</a>
-                                      <a class="dropdown-item" href="#">Something else here</a>
+                                      
+                                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#RemoteModem" :d="$d">Remote Modem</a>
+                                      <a class="dropdown-item" href="{{route('restartkoneksi', [$slugcatatan, $d['.id']])}}">Restart Koneksi</a>
                                     </div>
                                   </div>
                                 </td>
+                                <td><button class="btn btn-dark copy-btn"><i class="fas fa-copy"></i> Copy Address</button>
                                 <td>{{$d['service']}}</td>
-                                <td>{{$d['address']}}</td>
+                                <td class="text-to-copy">{{$d['address']}}</td>
+                       
                             </tr>
                             @endforeach
                         </tbody>
@@ -64,7 +67,7 @@
         </section>
       </div>
       <x-dcore.footer />
-      <x-dcore.modaltambah />
+      <x-dcore.modalremote :slugcatatan="$slugcatatan" />
 
     </div>
   </div>
