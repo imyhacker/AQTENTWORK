@@ -28,15 +28,15 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/home/postmikrotik', [HomeController::class, 'postmikrotik'])->name('postmikrotik');
 Route::post('/home/postolt', [HomeController::class, 'postolt'])->name('postolt');
 
-Route::prefix('/home/data')->group(function($slugcatatan = null, $idm = null, $address = null, $restartkoneksi = null){
+Route::prefix('/home/data')->group(function($slugcatatan = null, $idm = null, $address = null, $restartkoneksi = null, $name = null){
 
     Route::get('/carimikrotik', [HomeController::class, 'carimikrotik'])->name('carimikrotik');
-    
-    Route::post('/carimikrotik/cari', [HomeController::class, 'cari'])->name('cari');
-  
+    Route::get('/carimikrotik/cari', [HomeController::class, 'cari'])->name('cari');
+
     // FITUR
-    Route::post('/carimikrotik/cari/{slugcatatan}/remotemodem', [HomeController::class, 'remotemodem'])->name('remotemodem', $slugcatatan);
-    Route::get('/carimikrotik/cari/{idm}/{slugcatatan}/restartkoneksi', [HomeController::class, 'restartkoneksi'])->name('restartkoneksi', $restartkoneksi, $idm);
+    Route::post('/carimikrotik/cari/{slugcatatan}/remotemodem', [HomeController::class, 'remotemodem'])->name('remotemodem');
+
+    Route::get('/carimikrotik/cari/{name}/{slugcatatan}/restartkoneksi', [HomeController::class, 'restartkoneksi'])->name('restartkoneksi', $restartkoneksi, $name);
 
 
     Route::get('/cariolt', [HomeController::class, 'cariolt'])->name('cariolt');

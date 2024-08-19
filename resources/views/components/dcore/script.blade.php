@@ -47,5 +47,18 @@
         });
     });
     </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle the click event on the Remote Modem link
+  $('#RemoteModem').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var ip = button.data('ip'); // Extract info from data-* attributes
+    
+    var modal = $(this);
+    modal.find('#ipAddress').val(ip); // Update the modal's input fields
+  });
+});
+</script>
+
 </body>
 </html>

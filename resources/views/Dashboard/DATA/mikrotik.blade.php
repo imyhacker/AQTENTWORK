@@ -24,9 +24,9 @@
                                 <th>ID</th>
                                 <th>Client</th>
                                 <th>Action</th>
+                                <th>XFunc</th>
                                 <th>Type</th>
                                 <th>Address</th>
-                                <th>XFunc</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,10 +42,10 @@
                                       Action
                                     </button>
                                     <div class="dropdown-menu">
-                                      
-                                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#RemoteModem" :d="$d">Remote Modem</a>
-                                      <a class="dropdown-item" href="{{route('restartkoneksi', [$slugcatatan, $d['.id']])}}">Restart Koneksi</a>
-                                    </div>
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#RemoteModem"
+         data-ip="{{ $d['address'] }}">Remote Modem</a>
+      <a class="dropdown-item" href="{{ route('restartkoneksi', [$slugcatatan, $d['name']]) }}">Restart Koneksi</a>
+    </div>
                                   </div>
                                 </td>
                                 <td><button class="btn btn-dark copy-btn"><i class="fas fa-copy"></i> Copy Address</button>

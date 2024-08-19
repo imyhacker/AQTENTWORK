@@ -14,10 +14,12 @@
 
     <!-- About Section -->
     <x-depan.about />
+    <x-depan.paket />
+
     <!-- /About Section -->
 
     <!-- Stats Section -->
-    <x-depan.stat />
+    <!-- <x-depan.stat /> -->
     <!-- /Stats Section -->
 
     <!-- Services Section -->
@@ -31,7 +33,6 @@
     <!-- /Features Section -->
 
     <!-- Pricing Section -->
-    <x-depan.paket />
    <!-- /Pricing Section -->
 
     <!-- Faq Section -->
