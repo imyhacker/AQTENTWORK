@@ -12,9 +12,9 @@
         <ul>
           <li><a href="#hero" class="active">Beranda</a></li>
           <li><a href="#about">Tentang</a></li>
-          <li><a href="#services">Pelayanan</a></li>
           <li><a href="#paket">Paket Internet</a></li>
-          
+          <li><a href="#services">Pelayanan</a></li>
+
           <li><a href="#faq">FAQ</a></li>
           {{-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>

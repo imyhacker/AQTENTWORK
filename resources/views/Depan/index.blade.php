@@ -19,7 +19,6 @@
     <!-- /About Section -->
 
     <!-- Stats Section -->
-    <!-- <x-depan.stat /> -->
     <!-- /Stats Section -->
 
     <!-- Services Section -->
