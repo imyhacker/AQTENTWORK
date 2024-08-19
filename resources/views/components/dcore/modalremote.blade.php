@@ -8,12 +8,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="{{ route('remotemodem', $slugcatatan) }}">
+      <form method="post" id="remoteModemForm" action="{{ route('remotemodem', $slugcatatan) }}">
         @csrf
         <div class="modal-body">
           <div class="form-group">
             <label for="ipAddress">IP Address</label>
-            <input type="text" class="form-control" id="ipAddress" name="ipaddr" value="ipAddress" placeholder="127.x.x.x" disabled>
+            <input type="text" class="form-control" id="ipAddress" name="ipaddr" placeholder="127.x.x.x" readonly="true">
           </div>
           <div class="form-group">
             <label for="port">PORT</label>

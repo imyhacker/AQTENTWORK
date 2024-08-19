@@ -30,4 +30,6 @@
 
     </div>
   </div>
+  @include('sweetalert::alert') <!-- Tambahkan ini sebelum tag penutup body -->
+
 <x-dcore.script />

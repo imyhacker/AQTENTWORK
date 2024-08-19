@@ -19,7 +19,33 @@
   <link rel="stylesheet" href="https://demo.getstisla.com/assets/css/style.css">
   <link rel="stylesheet" href="https://demo.getstisla.com/assets/css/components.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+   <style>
+/* custom.css */
 
+/* Make sure dropdown menu stays inside screen */
+.table-responsive {
+    overflow-x: auto; /* Add horizontal scroll if needed */
+}
+
+/* Ensure dropdown menu has a high z-index */
+.dropdown-menu {
+    z-index: 1050 !important; /* Ensure dropdown appears on top */
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Add smooth scrolling for iOS */
+    }
+    
+    .dropdown-menu {
+        position: static; /* Position dropdown relative to its container */
+        float: none;
+    }
+}
+
+    </style>
 </head>
 
 <body>
