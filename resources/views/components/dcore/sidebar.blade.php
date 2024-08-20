@@ -17,7 +17,7 @@
          
             <li class="menu-header">Stisla</li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>Mikrotik</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-server"></i> <span>Mikrotik</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-lin beep beep-sidebar" href="#" data-toggle="modal" data-target="#exampleModal">Tambah Mikrotik</a></li>
                 <li><a class="nav-lin beep beep-sidebar" href="{{route('carimikrotik')}}">Cari Mikrotik</a></li>                
@@ -25,7 +25,7 @@
             </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-plug"></i> <span>OLT</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-server"></i> <span>OLT</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-lin beep beep-sidebar" href="#" data-toggle="modal" data-target="#tambahOLT">Tambah OLT</a></li>           
                 <li><a class="nav-lin beep beep-sidebar" href="{{route('cariolt')}}">Cari OLT</a></li>                
@@ -33,13 +33,22 @@
             </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-dollar-sign"></i> <span>Promo</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-route"></i> <span>IP</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-lin beep beep-sidebar" href="">Data Mikrotik</a></li>                
-                
+                <li><a class="nav-lin beep beep-sidebar" href="{{route('carimikrotikneighbor')}}">Neighbor</a></li>                
+                <li><a class="nav-lin beep beep-sidebar" href="{{route('cariinterface')}}">Interface</a></li>                
+
             </ul>
             </li>
           
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-atom"></i> <span>Settings</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-lin beep beep-sidebar" href="{{route('carishcedule')}}">Schedule</a></li>                
+
+            </ul>
+            </li>
+
           </ul>
 
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

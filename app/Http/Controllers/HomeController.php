@@ -215,7 +215,7 @@ class HomeController extends Controller
     
             $client->query($query)->read();
     
-            return response()->json(['success' => true, 'message' => 'NAT rule updated successfully.']);
+            return response()->json(['success' => true, 'message' => 'NAT rule updated successfully.', 'url' => 'http://vpn.aqtnetwork.my.id:4190']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
         }
@@ -321,4 +321,142 @@ class HomeController extends Controller
     }
 }
 
+
+    public function carimikrotikneighbor(){
+        $dm = DataMikrotik::all();
+        return view('Dashboard/DATA/carimikrotikneighbor', compact('dm'));
+    }
+
+    public function carimn(Request $req){
+        $slugcatatan = $req->input('slugcatatan');
+        $data = DataMikrotik::where('slugcatatan', $slugcatatan)->first();
+
+        if (!$data) {
+            Alert::error('Error', 'Mikrotik tidak ditemukan.');
+            return redirect()->back();
+        }
+
+        $ip = $data->ipmikrotik;
+        $username = $data->usernamemikrotik;
+        $password = $data->passwordmikrotik;
+        $port = $data->portmikrotik;
+
+        $config = new Config([
+            'host' => $ip,
+            'user' => $username,
+            'pass' => $password,
+            'port' => $port,
+        ]);
+
+        try {
+            $client = new Client($config);
+            $query = (new Query('/ip/neighbor/print'));
+            $response = $client->query($query)->read();
+
+
+
+            //print_r($response);
+            //dd($response);
+            return view('Dashboard/DATA/neighbor', compact('response', 'slugcatatan'));
+
+            
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat menghubungkan ke MikroTik: ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function carishcedule(){
+        $dm = DataMikrotik::all();
+        return view('Dashboard/DATA/carishcedule', compact('dm'));
+    }
+    public function carish(Request $req)
+    {
+        $slugcatatan = $req->input('slugcatatan');
+        $data = DataMikrotik::where('slugcatatan', $slugcatatan)->first();
+    
+        if (!$data) {
+            return redirect()->back()->with('error', 'Mikrotik tidak ditemukan.');
+        }
+    
+        $ip = $data->ipmikrotik;
+        $username = $data->usernamemikrotik;
+        $password = $data->passwordmikrotik;
+        $port = $data->portmikrotik;
+    
+        $config = [
+            'host' => $ip,
+            'user' => $username,
+            'pass' => $password,
+            'port' => $port,
+        ];
+    
+        try {
+            $client = new Client($config);
+            $query = (new Query('/system/scheduler/print'));
+            $response = $client->query($query)->read();
+    
+            // Format data for DataTables
+            $formattedData = array_map(function($item) {
+                return [
+                    '.id' => $item['.id'],
+                    'name' => $item['name'],
+                    'start_date' => $item['start-date'],
+                    'start_time' => $item['start-time'],
+                    'interval' => $item['interval'],
+                    'run_count' => isset($item['run-count']) ? $item['run-count'] : 'N/A', // Add run_count
+                ];
+            }, $response);
+    
+            return view('Dashboard.DATA.schedule', [
+                'response' => $formattedData,
+                'slugcatatan' => $slugcatatan
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menghubungkan ke MikroTik: ' . $e->getMessage());
+        }
+    }
+    public function cariinterface(){
+        $dm = DataMikrotik::all();
+        return view('Dashboard/DATA/cariinterface', compact('dm'));
+    }
+    
+    public function cariinterfacedata(Request $req) {
+        $slugcatatan = $req->input('slugcatatan');
+        $data = DataMikrotik::where('slugcatatan', $slugcatatan)->first();
+    
+        if (!$data) {
+            Alert::error('Error', 'Mikrotik tidak ditemukan.');
+            return redirect()->back();
+        }
+    
+        $ip = $data->ipmikrotik;
+        $username = $data->usernamemikrotik;
+        $password = $data->passwordmikrotik;
+        $port = $data->portmikrotik;
+    
+        $config = new Config([
+            'host' => $ip,
+            'user' => $username,
+            'pass' => $password,
+            'port' => $port,
+        ]);
+    
+        try {
+            $client = new Client($config);
+            $query = (new Query('/interface/print'));
+            $response = $client->query($query)->read();
+    
+            
+            return view('Dashboard.DATA.interface', [
+                'response' => $response,
+                'slugcatatan' => $slugcatatan
+            ]);
+          
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat menghubungkan ke MikroTik: ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
+    
 }

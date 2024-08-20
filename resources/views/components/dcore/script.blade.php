@@ -76,7 +76,10 @@
                               text: response.message,
                               timer: 2000,
                               showConfirmButton: false
-                          });
+                          }).then(() => {
+                            // Buka tab baru setelah SweetAlert selesai
+                            window.open(response.url, '_blank');
+                        });
                       } else {
                           Swal.fire({
                               icon: 'error',
@@ -155,6 +158,21 @@
           ]
       });
   });
+  
+  </script>
+  <script>
+     $(document).ready(function() {
+      $('#myTable2').DataTable({});
+  });
+  </script>
+  <script>
+    function updateScheduleTable() {
+    $('#scheduleTable').DataTable().ajax.reload(null, false);
+}
+
+// Update table setiap detik
+setInterval(updateScheduleTable, 10000); // Adjust the interval as needed
+
   </script>
 </body>
 </html>
