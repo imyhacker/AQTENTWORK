@@ -20,8 +20,9 @@
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-server"></i> <span>Mikrotik</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-lin beep beep-sidebar" href="#" data-toggle="modal" data-target="#exampleModal">Tambah Mikrotik</a></li>
-                <li><a class="nav-lin beep beep-sidebar" href="{{route('carimikrotik')}}">Cari Mikrotik</a></li>                
-           
+                <li><a class="nav-lin beep beep-sidebar" href="{{route('carimikrotik')}}">Client Mikrotik</a></li>                
+                <li><a class="nav-lin beep beep-sidebar" href="{{route('datamikrotik')}}">Data Mikrotik</a></li>                
+
             </ul>
             </li>
             <li class="dropdown">

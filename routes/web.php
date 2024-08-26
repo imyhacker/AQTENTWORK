@@ -32,6 +32,8 @@ Route::prefix('/home/data')->group(function($slugcatatan = null, $idm = null, $a
 
     // MIKROTIK
     Route::get('/carimikrotik', [HomeController::class, 'carimikrotik'])->name('carimikrotik');
+    Route::get('/datamikrotik', [HomeController::class, 'datamikrotik'])->name('datamikrotik');
+
     Route::get('/carimikrotik/cari', [HomeController::class, 'cari'])->name('cari');
 
     // FITUR MIKROTIK

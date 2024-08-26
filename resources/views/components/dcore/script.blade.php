@@ -193,6 +193,21 @@ setInterval(updateScheduleTable, 10000); // Adjust the interval as needed
         reloadTable();
     });
 </script>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const passwordFields = document.querySelectorAll('.password-field');
+    
+        passwordFields.forEach(function(field) {
+            field.addEventListener('mouseenter', function () {
+                this.textContent = this.getAttribute('data-password');
+            });
+    
+            field.addEventListener('mouseleave', function () {
+                this.textContent = '********';
+            });
+        });
+    });
+    </script>
+    
 </body>
 </html>

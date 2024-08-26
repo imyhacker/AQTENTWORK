@@ -74,7 +74,10 @@ class HomeController extends Controller
         $dm = DataMikrotik::all();
         return view('Dashboard/DATA/carimikrotik', compact('dm'));
     }
-
+    public function datamikrotik(){
+        $dm = DataMikrotik::all();
+        return view('Dashboard/DATA/datamikrotik', compact('dm'));
+    }
     public function cariolt()
     {
         $do = DataOLT::all();

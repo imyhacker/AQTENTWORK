@@ -44,6 +44,9 @@
         float: none;
     }
 }
+.password-field {
+    cursor: pointer;
+}
 
     </style>
 </head>
