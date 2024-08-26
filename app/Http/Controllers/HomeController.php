@@ -407,11 +407,8 @@ class HomeController extends Controller
                     'run_count' => isset($item['run-count']) ? $item['run-count'] : 'N/A', // Add run_count
                 ];
             }, $response);
-    
-            return view('Dashboard.DATA.schedule', [
-                'response' => $formattedData,
-                'slugcatatan' => $slugcatatan
-            ]);
+    //dd($formattedData);
+            return view('Dashboard/DATA/schedule', compact('formattedData', 'slugcatatan'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menghubungkan ke MikroTik: ' . $e->getMessage());
         }

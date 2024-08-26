@@ -174,5 +174,25 @@
 setInterval(updateScheduleTable, 10000); // Adjust the interval as needed
 
   </script>
+   <script type="text/javascript">
+    $(document).ready(function() {
+        function reloadTable() {
+            $('#table-container').load(location.href + " #myTable2", function() {
+                // Inisialisasi ulang DataTable setelah table dimuat
+                $('#myTable2').DataTable({
+                    // Konfigurasi DataTable sesuai kebutuhan
+                    destroy: true, // Menambahkan destroy agar DataTable bisa diinisialisasi ulang tanpa error
+                });
+            });
+        }
+
+        // Panggil fungsi reloadTable setiap 20 detik
+        setInterval(reloadTable, 20000); // 20000 milliseconds = 20 seconds
+        
+        // Panggil sekali saat pertama kali halaman dimuat
+        reloadTable();
+    });
+</script>
+
 </body>
 </html>
